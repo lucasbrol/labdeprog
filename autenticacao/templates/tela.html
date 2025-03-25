@@ -1,49 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'autenticacao/css/style.css' %}" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="{% static 'autenticacao/css/style.css' %}">
+</head>
+<body>
     <div>
-      <h1>Conecte-se</h1>
+        <h1>Conecte-se</h1>
 
-      <!-- Exibir mensagens de erro do Django -->
-      {% if erro %}
-      <p class="error-message">{{ erro }}</p>
-      {% endif %}
+        <!-- Exibir mensagens de erro do Django -->
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="error-message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-      <!-- Formulário de Login -->
-      <form id="loginForm" action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
+        <!-- Formulário de Login -->
+        <form id="loginForm" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
 
-        <label for="email">E-mail <span style="color: red">*</span></label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          placeholder="Digite seu e-mail"
-          required
-        />
+            <label for="email">E-mail <span style="color: red">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
 
-        <label for="password">Senha <span style="color: red">*</span></label>
-        <input
-          type="password"
-          id="password"
-          name="senha"
-          placeholder="Digite sua senha"
-          required
-        />
-        <p>Ainda não tem uma conta?</p>
-        <a href="{% url 'cadastro' %}">
-          <button type="button">Cadastre-se</button>
-        </a>
+            <label for="password">Senha <span style="color: red">*</span></label>
+            <input type="password" id="password" name="senha" placeholder="Digite sua senha" required>
 
-        <button type="submit">Entrar</button>
-      </form>
+            <button type="submit">Entrar</button>
+        </form>
+
+        <p>Ainda não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
     </div>
-  </body>
+</body>
 </html>

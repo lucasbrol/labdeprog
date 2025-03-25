@@ -103,7 +103,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Definição do modelo de usuário personalizado (se for usar um)
-# AUTH_USER_MODEL = 'autenticacao.Usuario'
+AUTH_USER_MODEL = 'autenticacao.Usuario'
 
 # Configuração do log (opcional)
 LOGGING = {
