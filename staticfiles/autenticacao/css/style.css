@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('images/teladefundo.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh; 
+    margin: 0;
+}
+
+div {
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: 40px;
+    border-radius: 15px;
+    color: white;
+    width: 350px;
+    text-align: center;
+
+    /* Centralizando o div manualmente */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: calc(100% - 20px); /* Define largura com margem */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+
+    /* Centralizando manualmente */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    background-color: dodgerblue;
+    border: none;
+    padding: 10px;
+    width: calc(100% - 20px); /* Define largura com margem */
+    border-radius: 50px;
+    color: white;
+    font-size: 16px;
+
+    /* Ajustando a posição Y do botão */
+    margin-top: 20px; /* Altere o valor para aumentar ou diminuir o espaço */
+}
+
+button:hover {
+    background-color: deepskyblue;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+
+    /* Centralizando manualmente */
+    text-align: center; 
+}
