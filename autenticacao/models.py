@@ -1,13 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from .managers import UsuarioManager
 
 class Usuario(AbstractUser):
     email = models.EmailField(unique=True)  # Email obrigatório e único
     nome = models.CharField(max_length=100)
+    
 
     USERNAME_FIELD = 'email'  # Login será feito com email
     REQUIRED_FIELDS = ['nome']  # Não precisa de 'username' aqui, pois o Django já exige
 
+    objects = UsuarioManager()
+    
     # Evitar conflito nos campos groups e user_permissions
     groups = models.ManyToManyField(
         'auth.Group',
