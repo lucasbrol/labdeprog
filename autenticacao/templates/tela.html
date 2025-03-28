@@ -9,9 +9,8 @@
 </head>
 <body>
     <div>
-        <h1>Conecte-se</h1>
+        <h1>Login</h1>
 
-        <!-- Exibir mensagens de erro do Django -->
         {% if messages %}
             <ul>
                 {% for message in messages %}
@@ -20,7 +19,6 @@
             </ul>
         {% endif %}
 
-        <!-- Formulário de Login -->
         <form id="loginForm" action="{% url 'login' %}" method="POST">
             {% csrf_token %}
 

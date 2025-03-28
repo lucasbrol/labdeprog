@@ -4,8 +4,7 @@ from pathlib import Path
 # Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Segurança: mantém Debug ativado apenas para desenvolvimento
-DEBUG = True  # Altere para False em produção!
+DEBUG = False
 
 # Defina os hosts permitidos
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
@@ -18,8 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  # Para APIs REST
-    'autenticacao',  # Seu app de autenticação
+    'rest_framework',  
+    'autenticacao',  
 ]
 
 # Middlewares do Django
@@ -60,11 +59,11 @@ WSGI_APPLICATION = 'meu_projeto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'meu_banco',   # Nome do banco de dados
-        'USER': 'root', # Usuário do MySQL
-        'PASSWORD': '123456', # Senha do MySQL
-        'HOST': 'localhost',  # Ou o IP do servidor MySQL
-        'PORT': '3306',  # Porta padrão do MySQL
+        'NAME': 'meu_banco',   
+        'USER': 'root', 
+        'PASSWORD': '123456', 
+        'HOST': 'localhost',  
+        'PORT': '3306',  
         'OPTIONS': {
             'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
@@ -102,10 +101,10 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-# Definição do modelo de usuário personalizado (se for usar um)
+# Definição do modelo de usuário personalizado 
 AUTH_USER_MODEL = 'autenticacao.Usuario'
 
-# Configuração do log (opcional)
+# Configuração do log 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

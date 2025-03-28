@@ -12,7 +12,9 @@
       <h1>Bem-vindo ao Site!</h1>
       <p>Você está logado.</p>
 
-      <a><button>Sair</button></a>
+      <form action="{% url 'login' %}" method="get">
+        <button type="submit">Sair</button>
+      </form>
     </div>
   </body>
 </html>
