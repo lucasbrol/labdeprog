@@ -1,11 +1,15 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url('autenticacao/static/images/teladefundo.png');
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    background-position: center; 
-    height: 100vh; 
     margin: 0;
+    padding: 0;
+    background-image: url("/static/images/teladefundo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div {

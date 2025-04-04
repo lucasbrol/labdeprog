@@ -4,7 +4,7 @@ from pathlib import Path
 # Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = False
+DEBUG = True
 
 # Defina os hosts permitidos
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
@@ -39,7 +39,7 @@ ROOT_URLCONF = 'meu_projeto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Se tiver templates HTML
+        'DIRS': [os.path.join(BASE_DIR, 'autenticacao', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,9 +87,7 @@ USE_TZ = True
 
 # Configuração de arquivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, "autenticacao", "static")
-]
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, "autenticacao", "static") ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Configuração de arquivos de mídia (se necessário)
