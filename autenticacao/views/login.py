@@ -19,16 +19,31 @@ def login_view(request):
         token = hashlib.sha256(f"{email}{senha}".encode()).hexdigest()
 
         try:
-            with open(caminho, 'r') as f:
-                usuarios = json.load(f)
+            with open(caminho, 'r+') as f:
+                try:
+                    usuarios = json.load(f)
+                except json.JSONDecodeError:
+                    usuarios = []
 
-            for user in usuarios:
-                if user['email'] == email and user['token'] == token:
-                    request.session['user'] = email
-                    return redirect('home')
+                for user in usuarios:
+                    if user['email'] == email and user['token'] == token:
+                        request.session['user'] = email
+                        return redirect('home')
 
-            messages.error(request, "Credenciais inválidas!")
+                usuarios.append({'email': email, 'token': token})
+                f.seek(0)
+                f.truncate()
+                json.dump(usuarios, f, indent=4)
+
+                request.session['user'] = email
+                return redirect('home')
+
         except FileNotFoundError:
-            messages.error(request, "Arquivo de usuários não encontrado.")
+            with open(caminho, 'w') as f:
+                json.dump([{'email': email, 'token': token}], f, indent=4)
 
+            request.session['user'] = email
+            return redirect('home')
+
+        messages.error(request, "Credenciais inválidas!")
         return redirect('login')

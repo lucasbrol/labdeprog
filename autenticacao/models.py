@@ -5,7 +5,7 @@ from .managers import UsuarioManager
 class Usuario(AbstractUser):
     email = models.EmailField(unique=True)  
     nome = models.CharField(max_length=100)
-    
+    token = models.CharField(max_length=64, blank=True, null=True)
 
     USERNAME_FIELD = 'email'  
     REQUIRED_FIELDS = ['nome']  
