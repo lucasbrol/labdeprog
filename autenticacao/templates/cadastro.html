@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{% static 'autenticacao/css/style.css' %}" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Cadastro</h2>
+
+      {% if messages %}
+        {% for message in messages %}
+          <p class="error-message">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+
+      <form method="POST">
+        {% csrf_token %}
+        <label for="email">Email:</label>
+        <input type="email" name="email" required />
+
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" required />
+
+        <button type="submit">Cadastrar</button>
+      </form>
+
+      <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login</a></p>
+    </div>
+  </body>
+</html>

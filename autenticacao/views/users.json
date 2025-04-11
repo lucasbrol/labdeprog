@@ -1,0 +1,22 @@
+[
+    {
+        "email": "lucasbrasil@gmail.com",
+        "token": "89f16f17eae9eec295106762bd5c8277b366cd1c6e2b6c9e289d23776b1f2f8b"
+    },
+    {
+        "email": "viniciusm@gmail.com",
+        "token": "6da34f68977431c5711559a0653f91b2b928e17f6d0fb1d25c43f9ad6f389412"
+    },
+    {
+        "email": "guilherme@gmail.com",
+        "token": "1ba84c2d9e88889f0106ae8999690d3e730cf4ef803d990f73acda043522181b"
+    },
+    {
+        "email": "brenop@gmail.com",
+        "token": "5849759e6c2059e8c627e88fd33a17b7d49b2d2a8d3febb2f2c46772a25cae6c"
+    },
+    {
+        "email": "teste2@gmail.com",
+        "token": "10522254fc5bfd2c09ed5be5c7660af58a9fd1f251e8149becbd6de090de5d43"
+    }
+]

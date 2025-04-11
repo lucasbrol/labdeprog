@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link rel="stylesheet" href="{% static 'autenticacao/css/style.css' %}">
+</head>
+<body>
+    <div>
+        <h1>Login</h1>
+
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="error-message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form id="loginForm" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <label for="email">E-mail <span style="color: red">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+            <label for="password">Senha <span style="color: red">*</span></label>
+            <input type="password" id="password" name="senha" placeholder="Digite sua senha" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        <p>Ainda não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+    </div>
+</body>
+</html>
