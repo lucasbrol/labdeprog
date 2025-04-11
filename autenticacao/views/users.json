@@ -18,5 +18,9 @@
     {
         "email": "teste2@gmail.com",
         "token": "10522254fc5bfd2c09ed5be5c7660af58a9fd1f251e8149becbd6de090de5d43"
+    },
+    {
+        "email": "vinicius@gmail.com",
+        "token": "5e4635513922cb70767dd0ab20aaed0c85b1830ed0c11a746d5f3b1663d8cc8f"
     }
 ]
