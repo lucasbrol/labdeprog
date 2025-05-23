@@ -1,0 +1,260 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>203GANG</title>
+    <link rel="stylesheet" href="{% static 'home/css/stylehome.css' %}">
+</head>
+
+<body>
+    <div class="top-banner">
+        <div class="promo-text">PRODUTOS DE MODA COM ATÉ 70% OFF</div>
+        <div class="user-tools">
+            <div class="accessibility">
+                <span class="icon">⚙️</span>
+                Acessibilidade
+            </div>
+            <div class="help">
+                <span class="icon">❓</span>
+                Tire suas dúvidas
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo"><img src="{% static '/images/logo.png' %}" alt="Descrição da imagem" width="90"></div>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="O que você está procurando?">
+            <button class="search-button">🔍</button>
+        </div>
+        <div class="header-actions">
+
+            <div class="user">
+                👤
+                {% if user_email %}
+                <span class="user-text">{{ user_email }}</span>
+                <a href="{% url 'logout' %}" class="logout-link">Sair</a>
+                {% else %}
+                <span class="user-text"><a href="{% url 'login' %}">Entrar</a></span>
+                {% endif %}
+            </div>
+            <div class="cart">
+                🛒
+                <span class="cart-badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dropdown-categorias">
+        <button class="menu-toggle" id="toggle-categorias">
+            <span class="menu-icon">☰</span> Home
+        </button>
+    </div>
+    
+    <div class="location-bar">
+        <span class="location-icon">📍</span>
+        Informe seu CEP
+    </div>
+
+    <div class="app-promo">
+        <span class="app-only"></span>
+        <span class="discount-tag"></span>
+
+        <span class="coupon-code"></span>
+    </div>
+
+    <section class="products-container">
+        <h2>Produtos em Destaque</h2>
+
+        <div class="products-layout">
+            <aside class="filters-sidebar">
+                <h3>Filtrar Produtos</h3>
+
+                <div class="filter-group">
+                    <h4>Categoria</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="tipo" value="camiseta"> Camiseta
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="tipo" value="calca"> Calça
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="tipo" value="short"> Short
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="tipo" value="moletom"> Moletom
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Tamanho</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="P"> P
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="M"> M
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="G"> G
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="size" value="GG"> GG
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Cor</h4>
+                    <div class="filter-options color-options">
+                        <label class="color-option" style="background-color: #000000;">
+                            <input type="checkbox" name="color" value="preto">
+                            <span class="color-name">Preto</span>
+                        </label>
+                        <label class="color-option" style="background-color: #777777;">
+                            <input type="checkbox" name="color" value="cinza">
+                            <span class="color-name">Cinza</span>
+                        </label>
+                        <label class="color-option" style="background-color: #ffffff; border: 1px solid #ddd;">
+                            <input type="checkbox" name="color" value="branco">
+                            <span class="color-name">Branco</span>
+                        </label>
+                        <label class="color-option" style="background-color: #4d7a3c;">
+                            <input type="checkbox" name="color" value="verde">
+                            <span class="color-name">Verde</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Faixa de Preço</h4>
+                    <div class="price-range">
+                        <div class="price-inputs">
+                            <input type="number" id="min-price" placeholder="Mínimo" min="0">
+                            <span>até</span>
+                            <input type="number" id="max-price" placeholder="Máximo" min="0">
+                        </div>
+                        <button id="apply-price" class="apply-price-btn">Aplicar</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Coleção</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="collection" value="sportif"> Le Suf Sportif
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="collection" value="4suf"> 4SUF
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="collection" value="basic"> Basic
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="collection" value="kml"> KML
+                        </label>
+                    </div>
+                </div>                
+
+                <button id="clear-filters" class="clear-filters-btn">Limpar Filtros</button>
+            </aside>
+
+            <div class="product-grid" id="filtered-products">
+                <div class="product-card" data-size="M,G" data-color="preto" data-price="219.00"
+                    data-collection="sportif" data-produto-id="1" data-tipo="camiseta">
+                    <button class="wishlist-btn" data-produto-id="1">
+
+                    </button>
+                    <img src="{% static 'images/camisa1.jpg' %}" alt="Produto 1" class="product-image">
+                    <h3 class="product-title">Camiseta Sufgang Le Suf Sportif</h3>
+                    <p class="product-price">R$ 219,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="product-card" data-size="P,M,G" data-color="verde" data-price="189.00"
+                    data-collection="4suf" data-produto-id="2" data-tipo="camiseta">
+                    <button class="wishlist-btn" data-produto-id="2">
+
+                    </button>
+                    <img src="{% static 'images/camisa2.jpg' %}" alt="Produto 2" class="product-image">
+                    <h3 class="product-title">Camiseta Sufgang 4SUF Verde</h3>
+                    <p class="product-price">R$ 189,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="product-card" data-size="P,M,G,GG" data-color="preto" data-price="149.00"
+                    data-collection="basic" data-produto-id="3" data-tipo="camiseta">
+                    <button class="wishlist-btn" data-produto-id="3">
+
+                    </button>
+                    <img src="{% static 'images/camisa3.jpg' %}" alt="Produto 3" class="product-image">
+                    <h3 class="product-title">Camiseta Sufgang Basic Logo Preta</h3>
+                    <p class="product-price">R$ 149,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="product-card" data-size="P,M,G,GG" data-color="preto" data-price="249.00"
+                    data-collection="4suf" data-produto-id="4" data-tipo="short">
+                    <button class="wishlist-btn" data-produto-id="4">
+
+                    </button>
+                    <img src="{% static 'images/short1.jpg' %}" alt="Produto 4" class="product-image">
+                    <h3 class="product-title">Short Sufgang 4SUF Preto</h3>
+                    <p class="product-price">R$ 249,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="product-card" data-size="P,M,G,GG" data-color="cinza" data-price="329.00"
+                    data-collection="kml" data-produto-id="5" data-tipo="moletom">
+                    <button class="wishlist-btn" data-produto-id="5">
+
+                    </button>
+                    <img src="{% static 'images/moletom1.jpg' %}" alt="Produto 5" class="product-image">
+                    <h3 class="product-title">Moletom Sufgang KML Chumbo</h3>
+                    <p class="product-price">R$ 329,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="product-card" data-size="P,M,G,GG" data-color="branco" data-price="299.00"
+                    data-collection="4suf" data-produto-id="6" data-tipo="calca">
+                    <button class="wishlist-btn" data-produto-id="6">
+
+                    </button>
+                    <img src="{% static 'images/calca1.jpg' %}" alt="Produto 6" class="product-image">
+                    <h3 class="product-title">Calça Sufgang 4SUF Sarja Branca</h3>
+                    <p class="product-price">R$ 299,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <section class="wishlist-section" id="wishlist-section" style="display: none;">
+        <div class="container">
+            <h2>Minha Lista de Desejos</h2>
+            <div class="wishlist-items" id="wishlist-items">
+            </div>
+            <div class="wishlist-empty" id="wishlist-empty">
+                <p>Sua lista de desejos está vazia.</p>
+                <button class="cta-button"
+                    onclick="document.getElementById('wishlist-section').style.display = 'none';">Continuar
+                    Comprando</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        {% if user_email %}
+        © 2025 Minha Loja - Usuário: <strong>{{ user_email }}</strong> - Todos os direitos reservados.
+        {% else %}
+        © 2025 203GANG - Todos os direitos reservados.
+        {% endif %}
+    </footer>
+
+    <script src="{% static 'home/js/funcionalidades.js' %}"></script>

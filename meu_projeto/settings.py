@@ -18,7 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',  
-    'autenticacao',  
+    'autenticacao',
+    'home',
 ]
 
 # Middlewares do Django
@@ -40,6 +41,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'autenticacao', 'templates')],
+        'DIRS': [BASE_DIR / 'home' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,6 +90,7 @@ USE_TZ = True
 # Configuração de arquivos estáticos
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, "autenticacao", "static") ]
+STATICFILES_DIRS = [BASE_DIR / "home" / "static"]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Configuração de arquivos de mídia (se necessário)

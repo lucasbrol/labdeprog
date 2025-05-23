@@ -18,5 +18,21 @@
     {
         "email": "teste2@gmail.com",
         "token": "10522254fc5bfd2c09ed5be5c7660af58a9fd1f251e8149becbd6de090de5d43"
+    },
+    {
+        "email": "teste3@gmail.com",
+        "token": "a6e9988182b2fd6cce6b48a8a6f82e3f32abb12ec2a13a9f96fa2c66bc274303"
+    },
+    {
+        "email": "teste1@gmail.com",
+        "token": "259853270eba8b7472ecf7c27b6a217dcf1f7393141b6495cd36f8841c68199c"
+    },
+    {
+        "email": "login@exemplo.com",
+        "token": "1f4f62a15c328008b0202ec6901c3c2d5e6b1b55d2563e242b2b3f5a9bfbcd7e"
+    },
+    {
+        "email": "claudin@gmail.com",
+        "token": "f19b66f22548f90bf07093b3941007cac9f88b1f8684678462b0f2e6dd4b671b"
     }
 ]

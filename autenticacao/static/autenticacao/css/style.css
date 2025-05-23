@@ -51,7 +51,7 @@ button {
     border-radius: 50px;
     color: white;
     font-size: 16px;
-
+    
     margin-top: 20px;
 }
 
@@ -59,10 +59,15 @@ button:hover {
     background-color: deepskyblue;
     cursor: pointer;
 }
+button:disabled {
+    background-color: #999;
+    color: #ddd;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
 
 .error-message {
     color: red;
     font-size: 14px;
-
     text-align: center; 
 }
