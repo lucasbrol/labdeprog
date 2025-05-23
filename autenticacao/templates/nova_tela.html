@@ -1,0 +1,492 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Minimalista</title>
+    <link rel="stylesheet" href="{% static 'autenticacao/css/style1.css' %}">
+</head>
+<body>
+    <!-- Banner Superior -->
+    <div class="top-banner">
+        <div class="zattini-logo">203GANG</div>
+        <div class="promo-text">PRODUTOS DE MODA COM ATÉ 70% OFF</div>
+        <div class="user-tools">
+            <div class="accessibility">
+                <span class="icon">⚙️</span>
+                Acessibilidade
+            </div>
+            <div class="help">
+                <span class="icon">❓</span>
+                Tire suas dúvidas
+            </div>
+        </div>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header>
+        <div class="logo">Minha Loja</div>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="O que você está procurando?">
+            <button class="search-button">🔍</button>
+        </div>
+        <div class="header-actions">
+            <div class="wishlist" id="open-wishlist">
+                ❤️ Lista de Desejos
+                <span class="wishlist-badge">0</span>
+            </div>
+            <div class="user">
+                👤
+                {% if user_email %}
+                    <span class="user-text">{{ user_email }}</span>
+                    <a href="{% url 'logout' %}" class="logout-link">Sair</a>
+                {% else %}
+                    <span class="user-text"><a href="{% url 'login' %}">Entrar</a></span>
+                {% endif %}
+            </div>
+            <div class="cart">
+                🛒
+                <span class="cart-badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav>
+        <button class="menu-toggle">
+            <span class="menu-icon">☰</span>
+            Todas as categorias
+        </button>
+        <ul class="categories">
+            <li class="category"><a href="#" class="nav-link">Home</a></li>
+            <li class="category"><a href="#" class="nav-link">Produtos</a></li>
+            <li class="category"><a href="#" class="nav-link logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Barra de Localização -->
+    <div class="location-bar">
+        <span class="location-icon">📍</span>
+        Informe seu CEP
+    </div>
+
+    <!-- Banner de Promoção do App -->
+    <div class="app-promo">
+        <span class="app-only"></span> 
+        <span class="discount-tag"></span>
+        
+        <span class="coupon-code"></span>
+    </div>
+
+    <!-- Seção Principal -->
+    <main class="main-content nova-tela">
+        <!-- Seção Hero -->
+        <section class="hero">
+            <h1>Bem-vindo à 203GanG!</h1>
+            <p>Explore nossos produtos com estilo e simplicidade.</p>
+            <button class="cta-button">Ver Produtos</button>
+        </section>
+
+        <!-- Seção de Produtos com a barra de filtros -->
+        <section class="products-container">
+            <h2>Produtos em Destaque</h2>
+
+            <!-- Layout com filtros e produtos -->
+            <div class="products-layout">
+                <!-- Barra de Filtros -->
+                <aside class="filters-sidebar">
+                    <h3>Filtrar Produtos</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Tamanho</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="P"> P
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="M"> M
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="G"> G
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="GG"> GG
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Cor</h4>
+                        <div class="filter-options color-options">
+                            <label class="color-option" style="background-color: #000000;">
+                                <input type="checkbox" name="color" value="preto">
+                                <span class="color-name">Preto</span>
+                            </label>
+                            <label class="color-option" style="background-color: #777777;">
+                                <input type="checkbox" name="color" value="cinza">
+                                <span class="color-name">Cinza</span>
+                            </label>
+                            <label class="color-option" style="background-color: #ffffff; border: 1px solid #ddd;">
+                                <input type="checkbox" name="color" value="branco">
+                                <span class="color-name">Branco</span>
+                            </label>
+                            <label class="color-option" style="background-color: #4d7a3c;">
+                                <input type="checkbox" name="color" value="verde">
+                                <span class="color-name">Verde</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Faixa de Preço</h4>
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <input type="number" id="min-price" placeholder="Mínimo" min="0">
+                                <span>até</span>
+                                <input type="number" id="max-price" placeholder="Máximo" min="0">
+                            </div>
+                            <button id="apply-price" class="apply-price-btn">Aplicar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Coleção</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="collection" value="sportif"> Le Suf Sportif
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="collection" value="4suf"> 4SUF
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="collection" value="basic"> Basic
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button id="clear-filters" class="clear-filters-btn">Limpar Filtros</button>
+                </aside>
+                
+                <!-- Lista de Produtos -->
+                <div class="product-grid" id="filtered-products">
+                    <!-- Produto 1 -->
+                    <div class="product-card" data-size="M,G" data-color="preto" data-price="219.00" data-collection="sportif" data-produto-id="1">
+                        <button class="wishlist-btn" data-produto-id="1">
+                            <span class="heart-icon">❤️</span>
+                        </button>
+                        <img src="{% static 'images/produto1.jpg' %}" alt="Produto 1" class="product-image">
+                        <h3 class="product-title">Camiseta Sufgang Le Suf Sportif</h3>
+                        <p class="product-price">R$ 219,00</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+
+                    <!-- Produto 2 -->
+                    <div class="product-card" data-size="P,M,G" data-color="verde" data-price="189.00" data-collection="4suf" data-produto-id="2">
+                        <button class="wishlist-btn" data-produto-id="2">
+                            <span class="heart-icon">❤️</span>
+                        </button>
+                        <img src="{% static 'images/produto2.jpg' %}" alt="Produto 2" class="product-image">
+                        <h3 class="product-title">Camiseta Sufgang 4SUF Verde</h3>
+                        <p class="product-price">R$ 189,00</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+
+                    <!-- Produto 3 -->
+                    <div class="product-card" data-size="P,M,G,GG" data-color="preto" data-price="149.00" data-collection="basic" data-produto-id="3">
+                        <button class="wishlist-btn" data-produto-id="3">
+                            <span class="heart-icon">❤️</span>
+                        </button>
+                        <img src="{% static 'images/produto3.jpg' %}" alt="Produto 3" class="product-image">
+                        <h3 class="product-title">Camiseta Sufgang Basic Logo Preta</h3>
+                        <p class="product-price">R$ 149,00</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Seção da Lista de Desejos -->
+    <section class="wishlist-section" id="wishlist-section" style="display: none;">
+        <div class="container">
+            <h2>Minha Lista de Desejos</h2>
+            <div class="wishlist-items" id="wishlist-items">
+                <!-- Itens da lista de desejos serão inseridos aqui via JavaScript -->
+            </div>
+            <div class="wishlist-empty" id="wishlist-empty">
+                <p>Sua lista de desejos está vazia.</p>
+                <button class="cta-button" onclick="document.getElementById('wishlist-section').style.display = 'none';">Continuar Comprando</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        {% if user_email %}
+            © 2025 Minha Loja - Usuário: <strong>{{ user_email }}</strong> - Todos os direitos reservados.
+        {% else %}
+            © 2025 Minha Loja - Todos os direitos reservados.
+        {% endif %}
+    </footer>
+
+    <!-- JavaScript para sistema de filtragem -->
+    <script src="{% static 'js/filters.js' %}"></script>
+
+    <!-- Script para aplicar os filtros -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyBtn = document.getElementById('apply-price');
+            const clearBtn = document.getElementById('clear-filters');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            // Função para aplicar os filtros
+            function applyFilters() {
+                // Coletar valores dos filtros selecionados
+                const selectedSizes = Array.from(document.querySelectorAll('input[name="size"]:checked')).map(cb => cb.value);
+                const selectedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(cb => cb.value);
+                const selectedCollections = Array.from(document.querySelectorAll('input[name="collection"]:checked')).map(cb => cb.value);
+                const minPrice = document.getElementById('min-price').value ? parseFloat(document.getElementById('min-price').value) : 0;
+                const maxPrice = document.getElementById('max-price').value ? parseFloat(document.getElementById('max-price').value) : Infinity;
+                
+                // Filtrar cada produto
+                productCards.forEach(card => {
+                    let isVisible = true;
+                    
+                    // Verificar tamanho
+                    if (selectedSizes.length > 0) {
+                        const productSizes = card.dataset.size.split(',');
+                        const hasSizeMatch = selectedSizes.some(size => productSizes.includes(size));
+                        if (!hasSizeMatch) isVisible = false;
+                    }
+                    
+                    // Verificar cor
+                    if (isVisible && selectedColors.length > 0) {
+                        const productColor = card.dataset.color;
+                        if (!selectedColors.includes(productColor)) isVisible = false;
+                    }
+                    
+                    // Verificar coleção
+                    if (isVisible && selectedCollections.length > 0) {
+                        const productCollection = card.dataset.collection;
+                        if (!selectedCollections.includes(productCollection)) isVisible = false;
+                    }
+                    
+                    // Verificar preço
+                    if (isVisible) {
+                        const productPrice = parseFloat(card.dataset.price);
+                        if (productPrice < minPrice || productPrice > maxPrice) isVisible = false;
+                    }
+                    
+                    // Aplicar visibilidade
+                    card.style.display = isVisible ? 'block' : 'none';
+                });
+                
+                // Verificar se há produtos visíveis
+                const visibleProducts = document.querySelectorAll('.product-card[style="display: block"]');
+                if (visibleProducts.length === 0) {
+                    // Criar mensagem de nenhum resultado
+                    const noResultsMsg = document.createElement('div');
+                    noResultsMsg.className = 'no-results-message';
+                    noResultsMsg.textContent = 'Nenhum produto corresponde aos filtros selecionados.';
+                    noResultsMsg.style.gridColumn = '1 / -1';
+                    noResultsMsg.style.padding = '30px';
+                    noResultsMsg.style.textAlign = 'center';
+                    noResultsMsg.style.color = '#666';
+                    noResultsMsg.style.backgroundColor = '#f5f5f5';
+                    noResultsMsg.style.borderRadius = '8px';
+                    noResultsMsg.style.margin = '20px 0';
+                    
+                    // Remove mensagem anterior se existir
+                    const existingMsg = document.querySelector('.no-results-message');
+                    if (existingMsg) existingMsg.remove();
+                    
+                    // Adicionar mensagem
+                    document.getElementById('filtered-products').appendChild(noResultsMsg);
+                } else {
+                    // Remove a mensagem se existir e houver produtos
+                    const existingMsg = document.querySelector('.no-results-message');
+                    if (existingMsg) existingMsg.remove();
+                }
+            }
+            
+            // Função para limpar todos os filtros
+            function clearFilters() {
+                // Desmarcar checkboxes
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Limpar campos de preço
+                document.getElementById('min-price').value = '';
+                document.getElementById('max-price').value = '';
+                
+                // Mostrar todos os produtos
+                productCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                
+                // Remover mensagem de nenhum resultado se existir
+                const existingMsg = document.querySelector('.no-results-message');
+                if (existingMsg) existingMsg.remove();
+            }
+            
+            // Adicionar eventos aos botões
+            if (applyBtn) {
+                applyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    applyFilters();
+                });
+            }
+            
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    clearFilters();
+                });
+            }
+        });
+    </script>
+
+    <!-- Script para a funcionalidade de Lista de Desejos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Array para armazenar os itens da lista de desejos
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+            
+            // Atualizar contador da lista de desejos
+            function updateWishlistCount() {
+                const wishlistBadge = document.querySelector('.wishlist-badge');
+                if (wishlistBadge) {
+                    wishlistBadge.textContent = wishlistItems.length;
+                }
+            }
+            
+            // Renderizar itens da lista de desejos
+            function renderWishlistItems() {
+                const wishlistContainer = document.getElementById('wishlist-items');
+                const emptyMessage = document.getElementById('wishlist-empty');
+                
+                if (!wishlistContainer) return;
+                
+                wishlistContainer.innerHTML = '';
+                
+                if (wishlistItems.length === 0) {
+                    wishlistContainer.style.display = 'none';
+                    emptyMessage.style.display = 'block';
+                    return;
+                }
+                
+                wishlistContainer.style.display = 'grid';
+                emptyMessage.style.display = 'none';
+                
+                wishlistItems.forEach(item => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <button class="remove-wishlist-btn" data-produto-id="${item.id}">❌</button>
+                        <img src="${item.image}" alt="${item.title}" class="product-image">
+                        <h3 class="product-title">${item.title}</h3>
+                        <p class="product-price">${item.price}</p>
+                        <button class="buy-button">Comprar</button>
+                    `;
+                    
+                    const removeBtn = productCard.querySelector('.remove-wishlist-btn');
+                    removeBtn.addEventListener('click', function() {
+                        removeFromWishlist(item.id);
+                    });
+                    
+                    wishlistContainer.appendChild(productCard);
+                });
+            }
+            
+            // Adicionar à lista de desejos
+            function addToWishlist(productId) {
+                // Verifica se já existe na lista
+                const exists = wishlistItems.some(item => item.id === productId);
+                
+                if (!exists) {
+                    const productElement = document.querySelector(`.product-card[data-produto-id="${productId}"]`);
+                    
+                    if (productElement) {
+                        const title = productElement.querySelector('.product-title').textContent;
+                        const price = productElement.querySelector('.product-price').textContent;
+                        const imageSrc = productElement.querySelector('.product-image').src;
+                        
+                        wishlistItems.push({
+                            id: productId,
+                            title: title,
+                            price: price,
+                            image: imageSrc
+                        });
+                        
+                        localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+                        
+                        // Atualizar o ícone
+                        const heartIcon = document.querySelector(`.wishlist-btn[data-produto-id="${productId}"] .heart-icon`);
+                        if (heartIcon) {
+                            heartIcon.classList.add('active');
+                        }
+                        
+                        updateWishlistCount();
+                    }
+                }
+            }
+            
+            // Remover da lista de desejos
+            function removeFromWishlist(productId) {
+                wishlistItems = wishlistItems.filter(item => item.id !== productId);
+                localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+                
+                // Atualizar o ícone em todos os produtos
+                const heartIcon = document.querySelector(`.wishlist-btn[data-produto-id="${productId}"] .heart-icon`);
+                if (heartIcon) {
+                    heartIcon.classList.remove('active');
+                }
+                
+                updateWishlistCount();
+                renderWishlistItems();
+            }
+            
+            // Adicionar eventos aos botões de lista de desejos
+            document.querySelectorAll('.wishlist-btn').forEach(button => {
+                const productId = button.dataset.produtoId;
+                
+                // Verificar se já está na lista e atualizar visual
+                if (wishlistItems.some(item => item.id === productId)) {
+                    button.querySelector('.heart-icon').classList.add('active');
+                }
+                
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const heartIcon = this.querySelector('.heart-icon');
+                    
+                    if (heartIcon.classList.contains('active')) {
+                        removeFromWishlist(productId);
+                        heartIcon.classList.remove('active');
+                    } else {
+                        addToWishlist(productId);
+                        heartIcon.classList.add('active');
+                    }
+                });
+            });
+            
+            // Abrir/fechar a lista de desejos
+            document.getElementById('open-wishlist').addEventListener('click', function() {
+                const wishlistSection = document.getElementById('wishlist-section');
+                
+                if (wishlistSection.style.display === 'none') {
+                    renderWishlistItems();
+                    wishlistSection.style.display = 'block';
+                } else {
+                    wishlistSection.style.display = 'none';
+                }
+            });
+            
+            // Inicializar contador
+            updateWishlistCount();
+        });
+    </script>
+</body>
+</html>

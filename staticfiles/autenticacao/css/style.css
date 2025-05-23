@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url('images/teladefundo.jpg'); 
@@ -66,3 +67,71 @@ button:hover {
     /* Centralizando manualmente */
     text-align: center; 
 }
+=======
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
+    /* Estilo geral */
+    body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/images/teladefundo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    }
+    /* Estilo específico para a nova tela */
+    .nova-tela-body {
+    background-image: url("{% static 'autenticacao/images/teladefundo.png' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    }
+    
+    
+    /* Nova tela */
+    .nova-tela {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    }
+    
+    .hero h1 {
+    color: #6a1b9a; /* Roxo escuro */
+    }
+    
+    .hero p {
+    font-size: 18px;
+    }
+    
+    .cta-button {
+    background-color: #ffcc00; /* Amarelo destaque */
+    color: #6a1b9a; /* Roxo escuro */
+    border-radius: 5px;
+    padding: 10px 20px;
+    }
+    
+    .cta-button:hover {
+    background-color: #ffd740; /* Amarelo mais claro */
+    }
+    
+    /* Produtos */
+    .products h2 {
+    color: #6a1b9a; /* Roxo escuro */
+    }
+    
+    .product-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+>>>>>>> b68dd0b (Atualizações de funcionalidade (sair, filtro e lista de desejos))

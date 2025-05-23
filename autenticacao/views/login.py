@@ -41,5 +41,13 @@ def login_view(request):
             with open(caminho, 'w') as f:
                 json.dump([{'email': email, 'token': token}], f, indent=4)
 
+<<<<<<< HEAD
         request.session['user'] = email
         return redirect('home')
+=======
+            request.session['user'] = email
+            return redirect('home')
+
+        messages.error(request, "Credenciais inválidas!")
+        return redirect('login')
+>>>>>>> 41e45d14ca3df6b7cc84256f97b03da58a24a67a

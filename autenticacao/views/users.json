@@ -20,6 +20,7 @@
         "token": "10522254fc5bfd2c09ed5be5c7660af58a9fd1f251e8149becbd6de090de5d43"
     },
     {
+<<<<<<< HEAD
         "email": "teste3@gmail.com",
         "token": "a6e9988182b2fd6cce6b48a8a6f82e3f32abb12ec2a13a9f96fa2c66bc274303"
     },
@@ -34,5 +35,9 @@
     {
         "email": "claudin@gmail.com",
         "token": "f19b66f22548f90bf07093b3941007cac9f88b1f8684678462b0f2e6dd4b671b"
+=======
+        "email": "vinicius@gmail.com",
+        "token": "5e4635513922cb70767dd0ab20aaed0c85b1830ed0c11a746d5f3b1663d8cc8f"
+>>>>>>> 41e45d14ca3df6b7cc84256f97b03da58a24a67a
     }
 ]
