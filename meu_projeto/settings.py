@@ -125,3 +125,6 @@ LOGGING = {
     },
 }
 SECRET_KEY = '12bqqvdj_bt&5b+-s(bmtbodlx@)%i6m642)dbvcni#8hmp@)4'
+
+#Define o padrão de IDs automáticos para BigAutoField,suportando mais registros.
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

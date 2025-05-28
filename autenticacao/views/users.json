@@ -1,43 +1,6 @@
 [
     {
-        "email": "lucasbrasil@gmail.com",
-        "token": "89f16f17eae9eec295106762bd5c8277b366cd1c6e2b6c9e289d23776b1f2f8b"
-    },
-    {
-        "email": "viniciusm@gmail.com",
-        "token": "6da34f68977431c5711559a0653f91b2b928e17f6d0fb1d25c43f9ad6f389412"
-    },
-    {
-        "email": "guilherme@gmail.com",
-        "token": "1ba84c2d9e88889f0106ae8999690d3e730cf4ef803d990f73acda043522181b"
-    },
-    {
-        "email": "brenop@gmail.com",
-        "token": "5849759e6c2059e8c627e88fd33a17b7d49b2d2a8d3febb2f2c46772a25cae6c"
-    },
-    {
-        "email": "teste2@gmail.com",
-        "token": "10522254fc5bfd2c09ed5be5c7660af58a9fd1f251e8149becbd6de090de5d43"
-    },
-    {
-<<<<<<< HEAD
-        "email": "teste3@gmail.com",
-        "token": "a6e9988182b2fd6cce6b48a8a6f82e3f32abb12ec2a13a9f96fa2c66bc274303"
-    },
-    {
-        "email": "teste1@gmail.com",
-        "token": "259853270eba8b7472ecf7c27b6a217dcf1f7393141b6495cd36f8841c68199c"
-    },
-    {
-        "email": "login@exemplo.com",
-        "token": "1f4f62a15c328008b0202ec6901c3c2d5e6b1b55d2563e242b2b3f5a9bfbcd7e"
-    },
-    {
-        "email": "claudin@gmail.com",
-        "token": "f19b66f22548f90bf07093b3941007cac9f88b1f8684678462b0f2e6dd4b671b"
-=======
-        "email": "vinicius@gmail.com",
-        "token": "5e4635513922cb70767dd0ab20aaed0c85b1830ed0c11a746d5f3b1663d8cc8f"
->>>>>>> 41e45d14ca3df6b7cc84256f97b03da58a24a67a
+        "email": "lucas@gmail.com",
+        "token": "a2ece5cc10e1360eafe7d735ba5698921b97f26b27208ab6edb90e8ee908623a"
     }
 ]
